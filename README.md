@@ -8,31 +8,7 @@ Search Console tells you what's ranking, GA4 tells you what's converting, and al
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    A[Search Console API] --> C[(BigQuery raw layer: query, page, date, clicks, impressions)]
-    B[GA4 export] --> C
-
-    C --> D[gsc_performance: aggregate clicks/impressions by page + date]
-    C --> E[organic_sessions: sessions where medium = organic]
-    C --> F[organic_conversions: purchase / generate_lead events]
-
-    D --> G[organic_conversion_attribution.sql]
-    E --> G
-    F --> G
-
-    G --> H[page_level_summary: clicks, sessions, conversion value, value per click]
-    H --> I[Dashboard: organic ROI by page / keyword cluster]
-
-    classDef source fill:#F5F4FA,stroke:#644aab,color:#333
-    classDef agg fill:#fff3cd,stroke:#d35400,color:#333
-    classDef join fill:#e0f2f1,stroke:#00796b,color:#333
-    classDef output fill:#e8f5e9,stroke:#1e8449,color:#333
-    class A,B source
-    class D,E,F agg
-    class G,H join
-    class I output
-```
+![Architecture diagram](diagram.svg)
 
 The join happens on landing page and date rather than session ID, since Search Console has no concept of a GA4 session, it only reports aggregated query and page performance per day. That's a deliberate tradeoff: it means attribution is page-level rather than session-level, which is the right granularity for the question this toolkit answers, "which pages are worth the SEO investment," rather than individual user journeys.
 
