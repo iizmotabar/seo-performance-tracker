@@ -35,3 +35,10 @@ The current join operates at the page level. A natural next step, not included h
 ## Stack
 
 Python, Google Search Console API, BigQuery, GA4, dbt
+
+## Related
+
+* Case study: [SEO Keywords to Measurable Revenue](https://motabarbuildstuff.com/case-studies/seo-keywords-to-measurable-revenue/)
+* Service: [Marketing analytics consulting](https://motabarbuildstuff.com/marketing-analytics-consultant/)
+
+Built by [Motabar Javaid](https://motabarbuildstuff.com/about/), analytics engineer at [motabar.builds.stuff](https://motabarbuildstuff.com/).
